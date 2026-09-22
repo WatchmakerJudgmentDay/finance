@@ -1,11 +1,17 @@
 using Finance.Components;
+using Microsoft.EntityFrameworkCore;
+using Finance.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
 
+builder.Services.AddDbContextFactory<CashContext>(o => o.UseSqlite("Data Source=fanance.db"));
+builder.Services.AddQuickGridEntityFrameworkAdapter();
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -7,7 +7,8 @@ namespace Finance.Data
         public CashContext(DbContextOptions<CashContext> options) : base(options) { }
         public DbSet<Expense> Expenses => Set<Expense>();
         protected override void OnModelCreating(ModelBuilder b)
-        { 
+        {
+            b.Entity<Expense>().Property(y => y.Bank).HasDefaultValue(0);
             b.Entity<Expense>().Property(x => x.Amount).HasConversion<double>();
         }
     }

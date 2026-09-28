@@ -9,10 +9,10 @@ namespace Finance.Models
         public string? Comments { get; set; }
         public decimal Amount { get; set; }
         public DateTime TimeOfExpense { get; set; }
-        [NotMapped]
-        public BankType? Bank { get; set; }
-        [NotMapped]
-        public ExpenseType? TypeOfExpense { get; set; }
+        //[NotMapped]
+        public BankType Bank { get; set; }
+       // [NotMapped]
+        public ExpenseType TypeOfExpense { get; set; }
 
     }
 }

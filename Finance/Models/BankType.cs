@@ -4,8 +4,8 @@ namespace Finance.Models
 {
     public class BankType
     {
-        
-        public enum Bank { Debet, Credit, Cash}
+
+        public enum Bank : int {Debet = 0, Credit = 1, Cash = 2}
        
 
     }

@@ -17,7 +17,9 @@
 <QuickGrid Class="table" Items="@context.Expenses.OrderBy(b => b.Id).Skip((CurrentPage - 1)*PageSize).Take(PageSize)">
     <PropertyColumn Property="expense => expense.Title" />
     <PropertyColumn Property="expense => expense.Comments" />
+    <PropertyColumn Property="expense => expense.TypeOfExpense" />
     <PropertyColumn Property="expense => expense.Amount" />
+    <PropertyColumn Property="expense => expense.Bank" />
     <PropertyColumn Property="expense => expense.TimeOfExpense" />
 
     <TemplateColumn Context="expense">

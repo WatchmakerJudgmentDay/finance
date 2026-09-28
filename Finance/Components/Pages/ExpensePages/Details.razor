@@ -1,0 +1,52 @@
+@page "/expenses/details"
+@using Microsoft.EntityFrameworkCore
+@using Finance.Models
+@inject IDbContextFactory<Finance.Data.CashContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>Expense</h2>
+    <hr />
+    @if (expense is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Title</dt>
+            <dd class="col-sm-10">@expense.Title</dd>
+            <dt class="col-sm-2">Comments</dt>
+            <dd class="col-sm-10">@expense.Comments</dd>
+            <dt class="col-sm-2">Amount</dt>
+            <dd class="col-sm-10">@expense.Amount</dd>
+            <dt class="col-sm-2">TimeOfExpense</dt>
+            <dd class="col-sm-10">@expense.TimeOfExpense</dd>
+        </dl>
+        <div>
+            <a href="@($"/expenses/edit?id={expense.Id}")">Edit</a> |
+            <a href="@($"/expenses")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Expense? expense;
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        expense = await context.Expenses.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (expense is null)
+        {
+            NavigationManager.NotFound();
+        }
+    }
+}

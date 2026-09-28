@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Finance.Migrations
 {
     [DbContext(typeof(CashContext))]
-    [Migration("20260922074527_Init")]
+    [Migration("20260928104655_Init")]
     partial class Init
     {
         /// <inheritdoc />

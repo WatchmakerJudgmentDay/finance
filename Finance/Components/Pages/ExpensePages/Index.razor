@@ -30,10 +30,10 @@
 
     @if (CurrentPage > 1)
     {
-        <a class="btn btn-outline-secondary" href="@($"expenses?page={CurrentPage - 1}")">Назад</a>            
+        <a class="btn btn-outline-secondary" href="@($"expenses?page={@CurrentPage-1}")">Назад</a>            
     }
-    <span> class="mx-2">Сторінка @CurrentPage</span>
-    @if (context.Expenses.Count() > CurrentPage * PageSize){<a class="btn btn-outline-secondary" href="@($"expenses?page={CurrentPage + 1}")">Далі</a>}}
+    <span class="mx-2">Сторінка @CurrentPage</span>
+    @if (context.Expenses.Count() > CurrentPage * PageSize){<a class="btn btn-outline-secondary" href="@($"expenses?page={@CurrentPage + 1}")">Далі</a>}}
 </nav>
 
 @code {

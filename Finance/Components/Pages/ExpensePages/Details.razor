@@ -16,16 +16,7 @@
         <p><em>Loading...</em></p>
     }
     else {
-        <dl class="row">
-            <dt class="col-sm-2">Title</dt>
-            <dd class="col-sm-10">@expense.Title</dd>
-            <dt class="col-sm-2">Comments</dt>
-            <dd class="col-sm-10">@expense.Comments</dd>
-            <dt class="col-sm-2">Amount</dt>
-            <dd class="col-sm-10">@expense.Amount</dd>
-            <dt class="col-sm-2">TimeOfExpense</dt>
-            <dd class="col-sm-10">@expense.TimeOfExpense</dd>
-        </dl>
+        <ExpenseCard Expense="expense" Caption = "Подробиці запису"/>
         <div>
             <a href="@($"/expenses/edit?id={expense.Id}")">Edit</a> |
             <a href="@($"/expenses")">Back to List</a>
@@ -35,6 +26,9 @@
 
 @code {
     private Expense? expense;
+
+    [Parameter] public string? Caption { get; set; }
+    [Parameter] public bool ShowDetails { get; set; } = true;
 
     [SupplyParameterFromQuery]
     private int Id { get; set; }

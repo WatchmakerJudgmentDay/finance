@@ -17,22 +17,11 @@
         <p><em>Loading...</em></p>
     }
     else {
-        <dl class="row">
-            <dt class="col-sm-2">Title</dt>
-            <dd class="col-sm-10">@expense.Title</dd>
-        </dl>
-        <dl class="row">
-            <dt class="col-sm-2">Comments</dt>
-            <dd class="col-sm-10">@expense.Comments</dd>
-        </dl>
-        <dl class="row">
-            <dt class="col-sm-2">Amount</dt>
-            <dd class="col-sm-10">@expense.Amount</dd>
-        </dl>
-        <dl class="row">
-            <dt class="col-sm-2">TimeOfExpense</dt>
-            <dd class="col-sm-10">@expense.TimeOfExpense</dd>
-        </dl>
+        <ExpenseCard Expense="expense" Caption ="Перевірте, що видаляєте" ShowDetails="false" />
+       // @foreach (var b in expense)
+       // {
+       //     <ExpenseCard Expense="b" />
+       // }
         <EditForm method="post" Model="expense" OnValidSubmit="DeleteExpense" FormName="delete" Enhance>
             <button type="submit" class="btn btn-danger" disabled="@(expense is null)">Delete</button> |
             <a href="/expenses">Back to List</a>
@@ -42,6 +31,9 @@
 
 @code {
     private Expense? expense;
+
+    [Parameter] public string? Caption { get; set; }
+    [Parameter] public bool ShowDetails { get; set; } = true;
 
     [SupplyParameterFromQuery]
     private int Id { get; set; }

@@ -1,0 +1,12 @@
+﻿<div class="card mb-2">
+    <div class="card-body">
+        <h5 class="card-title">@Expense.Title</h5>
+        <p class="card-text">Витрати: @Expense.Amount</p>
+        <span class="badge bg-success">"Cash"</span>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Expense Expense { get; set; } = default!;
+}
